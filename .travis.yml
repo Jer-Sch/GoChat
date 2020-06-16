@@ -1,1 +1,16 @@
 language: ruby
+services:
+  - postgresql
+deploy:
+  provider: heroku
+  api_key:
+    secure: N9RN2rh/SafAXUDJWVXao+88+kRefAontLwQ8Kyau/Y4EiniVEyaTbZvtke6hsK6D9SzjNSKiyPu2gs4pv5GbCZNabz5TIwzeTokDNlkpvZxYFnSA9Qa6WxnQJ4EsCdWJ7ZHON/bHjT8yDZo2cpFR8RCii1m5sJj2A5a4c+p4qRcjPPonpJ3z6TA7Xup8HYbNaPVjjYm/w1LloJ2BfMZ0B6BfyHYC/+UsejGCHqBBAA1fcSa+ESdyvSTfZZA86S9sUx1Dnx8XcRP+n0qeS/s1JdTO6AtXqlm60IVU5xmoP3zPk/+8l/IBlr9RxDgutgjdDh+739DLavtwG88yMJxAB5soecZfKR6YNHowaWOvZV87eGwQE0Yh3jnljYc9bzOB19v2i++0t5k7ChnQkhAP/t8uNhDKyTIngwhdjF+sD6xj+DIltIkVwUxUcRV4A8adnavRaG+rWVovr4/OlcK+I6XYdnIKxrl949K6KUI09qFKKskaY9YUYhSxVBg/0Tam54f0ZcFpYyuhFAIL9zmAF6KzHm8zeM7N0h+a9/6AvLqitWnRN0G1xlp+QQaNXfwjiB0xt3W8QMPT72M71K38uh5ofFMacQNChKWLv/VwE6lKwcjsZm7GvgfLy70Y4sLb28gGlBV6GpNkacRGOmZ75bdeL6ytb3SE1E6u9/i92Y=
+  app: 
+    staging: go-chat-staging
+    production: hey-go-chat
+  on:
+    repo: Jer-Sch/GoChat
+  skip_cleanup: 'true'
+before_script:
+  - RAILS_ENV=test bundle exec rake db:create
+

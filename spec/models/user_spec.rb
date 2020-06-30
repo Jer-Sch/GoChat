@@ -1,13 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe 'validations' do
-    it 'is valid with valid attributes' do
-      user = User.create(email: 'jdoe@geemail.com',
-                         password: 'securepassword',
-                         password_confirmation: 'securepassword')
-      expect(user).to be_valid
-    end
+  it 'is valid with valid attributes' do
+    user = User.create(email: 'jdoe@geemail.com',
+                       password: 'securepassword',
+                       password_confirmation: 'securepassword')
+    expect(user).to be_valid
   end
 
   it 'is invalid without an email' do

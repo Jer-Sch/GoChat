@@ -11,23 +11,11 @@
     <%= javascript_pack_tag 'Index' %>
   </head>
   <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
-
-        .font-family-karla {
-            font-family: karla;
-        }
-    </style>
+  <%= render 'shared/font' %>
 
   <body class="bg-white font-family-karla h-screen">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-
-      <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.email %></strong>.
-        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-      <% end %>
-
-      <%= yield %>
+    <%= render 'shared/logout_link' %>
+      
+    <%= yield %>
   </body>
 </html>

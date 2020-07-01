@@ -6,6 +6,7 @@ RSpec.describe "Users::Registrations", type: :request do
             get '/users/sign_up'
 
             expect(response.status).to eq(200)
+            expect(response).to render_template(:new)
             expect(response.body).to include('Welcome.')
             expect(response.body).to include('Email')
             expect(response.body).to include('Password')

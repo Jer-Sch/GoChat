@@ -2,36 +2,32 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  it 'is valid with valid attributes' do
-    user = User.create(email: 'jdoe@geemail.com',
-                       password: 'securepassword',
-                       password_confirmation: 'securepassword')
+  context "with valid params" do
+    it "is valid" do
+      user = create(:user)
 
-    expect(user).to be_valid
+      expect(user).to be_valid
+    end
   end
 
-  it 'is invalid without an email' do
-    user = User.create(email: '',
-                       password: 'securepassword',
-                       password_confirmation: 'securepassword')
+  context "with invalid params" do
+    it 'is invalid without an email' do
+      user = build(:user, email: nil)
 
-    expect(user).to be_invalid
-  end
+      expect(user).to be_invalid
+    end
 
-  it 'is invalid without a password' do
-    user = User.create(email: 'jdoe@geemail.com',
-                       password: '',
-                       password_confirmation: 'securepassword')
+    it "is invalid without a password" do
+      user = build(:user, password: nil)
 
-    expect(user).to be_invalid
-  end
+      expect(user).to be_invalid
+    end
 
-  it 'requires a password confirmation' do
-    user = User.create(email: 'jdoe@geemail.com',
-                       password: 'securepassword',
-                       password_confirmation: '')
-                       
-    expect(user).to be_invalid
+    it "is invalid without a matching password confirmation" do
+      user = build(:user, password_confirmation: "thisdefinitelyisnotamatch")
+
+      expect(user).to be_invalid
+    end
   end
 
 end 

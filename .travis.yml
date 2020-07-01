@@ -16,4 +16,13 @@ deploy:
   skip_cleanup: 'true'
 before_script:
   - RAILS_ENV=test bundle exec rake db:create
+script:
+  - bundle exec rails webpacker:compile
+  - bundle exec rails spec
+install:
+  - bundle install
+  - nvm install node
+  - node -v
+  - npm i -g yarn
+  - yarn
 

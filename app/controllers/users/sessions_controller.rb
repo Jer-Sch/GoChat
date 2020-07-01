@@ -1,7 +1,6 @@
+# frozen_string_literal: true
+
 class Users::SessionsController < Devise::SessionsController
-  before_action :authenticate_user!
-  before_action :configure_sign_in_params, only: [:create]
-  skip_before_action :verify_authenticity_token, :only => :create
 
   def new
     super
@@ -15,9 +14,4 @@ class Users::SessionsController < Devise::SessionsController
     super
   end
 
-  protected
-
-  def configure_sign_in_params
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password, :password_confirmation])
-  end
 end

@@ -1,13 +1,9 @@
 Rails.application.routes.draw do
-  root 'application#index'
+  
+  root 'homepage#index', as: '/homepage'
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
-  get '/homepage/index', to: 'homepage#index'
-  # authenticated :user do
-  #   root to: 'users/registrations#index', as: :authenticated_user_root
-  # end
-  
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
 end

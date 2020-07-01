@@ -1,12 +1,11 @@
 class ApplicationController < ActionController::Base
-    def index
-        redirect_to '/users/sign_in'
-    end
+    before_action :authenticate_user!
+    
 
     protected
 
     def after_sign_in_path_for(resource)
-        homepage_index_path
+        homepage_path
     end
 
     def after_sign_out_path_for(resource)

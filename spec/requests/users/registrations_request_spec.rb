@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Users::Registrations", type: :request do
+
     describe 'get /users/sign_up' do
         it 'renders a sign up form' do
             get '/users/sign_up'
@@ -28,4 +29,5 @@ RSpec.describe "Users::Registrations", type: :request do
             expect(response).to redirect_to('/homepage/index')
         end
     end
+    
 end

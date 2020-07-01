@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Users::Registrations", type: :request do
 
-    describe 'get /users/sign_up' do
+    describe 'GET /users/sign_up' do
         it 'renders a sign up form' do
             get '/users/sign_up'
 
@@ -15,7 +15,7 @@ RSpec.describe "Users::Registrations", type: :request do
         end
     end
 
-    describe 'post /users' do
+    describe 'POST /users' do
         it 'creates a new user' do
             post '/users', params: {user: {email: "mkeller@mail.com", password: "s3cur3p4ssw0rd", password_confirmation: "s3cur3p4ssw0rd" } }
 

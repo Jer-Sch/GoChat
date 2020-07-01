@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Users::Sessions", type: :request do
 
-    describe 'get /users/sign_in' do
+    describe 'GET /users/sign_in' do
         it 'renders a sign in form' do
             get '/users/sign_in'
 
@@ -15,7 +15,7 @@ RSpec.describe "Users::Sessions", type: :request do
         end
     end
 
-    describe 'post /users/sign_in' do
+    describe 'POST /users/sign_in' do
         it 'signs a user in' do
             user = User.create(email: 'ghopper@mail.com', password: 's3cur3p4ssw0rd', password_confirmation: 's3cur3p4ssw0rd')
             sign_in user    # helper method defined in devise_request_spec_helper.rb
@@ -24,7 +24,7 @@ RSpec.describe "Users::Sessions", type: :request do
         end
     end
 
-    describe 'get /users/sign_out' do
+    describe 'GET /users/sign_out' do
         it 'signs a user out' do
             user = User.create(email: 'aturing@mail.com', password: 's3cur3p4ssw0rd', password_confirmation: 's3cur3p4ssw0rd')
 

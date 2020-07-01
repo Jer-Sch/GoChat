@@ -14,4 +14,18 @@ RSpec.describe "Users::Registrations", type: :request do
         end
     end
 
+    describe 'post /users' do
+        it 'creates a new user' do
+            post '/users', params: {user: {email: "mkeller@mail.com", password: "s3cur3p4ssw0rd", password_confirmation: "s3cur3p4ssw0rd" } }
+
+            expect(User.last.email).to eq("mkeller@mail.com")
+        end
+
+        it 'redirects to /homepage/index' do
+            post '/users', params: {user: {email: "alovelace@mail.com", password: "s3cur3p4ssw0rd", password_confirmation: "s3cur3p4ssw0rd" } }
+
+            expect(response.status).to eq(302)
+            expect(response).to redirect_to('/homepage/index')
+        end
+    end
 end

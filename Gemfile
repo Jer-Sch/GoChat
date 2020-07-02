@@ -18,6 +18,7 @@ gem 'puma', '~> 4.1'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+gem 'selenium-webdriver'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -25,11 +26,16 @@ gem 'webpacker', '~> 5.x'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
+gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'rspec-rails', '~> 4.0.0'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rails-controller-testing'
+  gem 'capybara'
+  gem 'shoulda-matchers', '~> 4.0'
+  gem 'factory_bot_rails'
 end
 
 group :development do

@@ -1,4 +1,7 @@
 import React from "react";
+import Channels from "./Channels";
+import Navbar from "./Navbar";
+import ChatBubbles from "./ChatBubbles";
 
 export default () => (
 <div className="relative flex w-full h-screen overflow-hidden antialiased bg-gray-200">
@@ -18,71 +21,7 @@ export default () => (
                 </div>
             </div>
         </div>
-        <div
-            className="relative mt-2 mb-4 overflow-x-hidden overflow-y-auto scrolling-touch lg:max-h-sm scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray">
-            <ul className="flex flex-col inline-block w-full h-screen px-2 select-none">
-                <li className="flex flex-no-wrap items-center pr-3 text-black rounded-lg cursor-pointer mt-200 py-65 hover:bg-gray-200"
-                    style={{paddingTop: "0.65rem", paddingBottom: "0.65rem"}}>
-                    <div className="flex justify-between w-full focus:outline-none">
-                        <div className="flex justify-between w-full">
-                            <div className="items-center flex-1 min-w-0">
-                                <div className="flex justify-center mb-1">
-                                    <h2 className="text-md font-semibold text-black"># Programming</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li className="flex flex-no-wrap items-center pr-3 text-black rounded-lg cursor-pointer mt-200 py-65 hover:bg-gray-200"
-                    style={{paddingTop: "0.65rem", paddingBottom: "0.65rem"}}>
-                    <div className="flex justify-between w-full focus:outline-none">
-                        <div className="flex justify-between w-full">
-                            <div className="items-center flex-1 min-w-0">
-                                <div className="flex justify-center mb-1">
-                                    <h2 className="text-md font-semibold text-black"># Ruby</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li className="flex flex-no-wrap items-center pr-3 text-black rounded-lg cursor-pointer mt-200 py-65 hover:bg-gray-200"
-                    style={{paddingTop: "0.65rem", paddingBottom: "0.65rem"}}>
-                    <div className="flex justify-between w-full focus:outline-none">
-                        <div className="flex justify-between w-full">
-                            <div className="items-center flex-1 min-w-0">
-                                <div className="flex justify-center mb-1">
-                                    <h2 className="text-md font-semibold text-black"># Pythonistas</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li className="flex flex-no-wrap items-center pr-3 text-black rounded-lg cursor-pointer mt-200 py-65 hover:bg-gray-200"
-                    style={{paddingTop: "0.65rem", paddingBottom: "0.65rem"}}>
-                    <div className="flex justify-between w-full focus:outline-none">
-                        <div className="flex justify-between w-full">
-                            <div className="items-center flex-1 min-w-0">
-                                <div className="flex justify-center mb-1">
-                                    <h2 className="text-md font-semibold text-black"># Rails</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li className="flex flex-no-wrap items-center pr-3 text-black rounded-lg cursor-pointer mt-200 py-65 hover:bg-gray-200"
-                    style={{paddingTop: "0.65rem", paddingBottom: "0.65rem"}}>
-                    <div className="flex justify-between w-full focus:outline-none">
-                        <div className="flex justify-between w-full">
-                            <div className="items-center flex-1 min-w-0">
-                                <div className="flex justify-center mb-1">
-                                    <h2 className="text-md font-semibold text-black"># Squirrels</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
+        <Channels />
         <div className="fixed absolute bottom-0 right-0 z-40 mb-6 mr-4">
             <button
                 className="flex items-center justify-center w-12 h-12 mr-3 text-xl font-semibold text-white bg-blue-500 rounded-full focus:outline-none flex-no-shrink">
@@ -95,47 +34,12 @@ export default () => (
         </div>
     </div>
     <div className="relative flex flex-col flex-1">
-        <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-4">
-            <div className="flex items-center flex-shrink-0 text-white mr-6">
-                <div className="font-semibold text-xl tracking-tight p-4"><span href="#"
-                        class="bg-black text-white font-bold text-xl p-4">GoChat</span></div>
-            </div>
-            <div className="block lg:hidden">
-                <button
-                    className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
-                    <svg className="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <title>Menu</title>
-                        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-                    </svg>
-                </button>
-            </div>
-            <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-                <div className="text-sm lg:flex-grow">
-                    <a href="https://github.com/Jer-Sch/GoChat"
-                        className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-                        GitHub Repo
-                    </a>
-                </div>
-                <a className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
-                    rel="nofollow" data-method="delete" href="/users/sign_out">
-                    Log out
-                </a>
-            </div>
-        </nav>
+        <Navbar />
         <div
             className="top-0 bottom-0 left-0 right-0 flex flex-col flex-1 overflow-hidden bg-transparent bg-bottom bg-cover">
             <div className="self-center flex-1 w-full max-w-xl">
                 <div className="relative flex flex-col px-3 py-1 m-auto">
-                    <div className="self-start w-3/4 my-2">
-                        <div className="p-4 text-sm bg-white rounded-t-lg rounded-r-lg shadow">
-                            Anyone here?
-                        </div>
-                    </div>
-                    <div className="self-end w-3/4 my-2">
-                        <div className="p-4 text-sm bg-white rounded-t-lg rounded-l-lg shadow">
-                            Hey! Welcome!
-                        </div>
-                    </div>
+                    <ChatBubbles />
                 </div>
             </div>
             <div

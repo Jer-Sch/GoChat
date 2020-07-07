@@ -1,5 +1,5 @@
 import React from "react";
-import Modal from "react-modal"
+import Modal from "react-modal";
 
 const customStyles = {
   content: {
@@ -14,6 +14,7 @@ const customStyles = {
 
 function NewChannelForm() {
   const [modalIsOpen, setIsOpen] = React.useState(false);
+
   function openModal() {
     setIsOpen(true);
   }

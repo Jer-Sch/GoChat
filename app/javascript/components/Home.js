@@ -17,7 +17,7 @@ export default () => (
         <div className="flex flex-row items-center inline-block px-2 list-none select-none">
           <div className="flex-auto px-1 mx-1 -mb-px text-center rounded-t-lg last:mr-0">
             <div
-              class="flex items-center justify-center block py-5 text-xl font-semibold leading-normal tracking-wide border-b-2 border-transparent">
+              className="flex items-center justify-center block py-5 text-xl font-semibold leading-normal tracking-wide border-b-2 border-transparent">
               Channels
                     </div>
           </div>

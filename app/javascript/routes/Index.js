@@ -5,5 +5,6 @@ import Home from "../components/Home";
 export default (
   <Router>
     <Route path="/" exact component={Home} />
+    <Route path="/channels" exact component={Home} />
   </Router>
 );

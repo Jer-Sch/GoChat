@@ -3,12 +3,12 @@ import Channels from "./Channels";
 import Navbar from "./Navbar";
 import ChatBubbles from "./ChatBubbles";
 import MessageForm from "./MessageForm";
-import NewChannelForm from "./NewChannelForm";
+import NewChannel from "./NewChannel";
 
 
 function Home() {
   return (
-    <div className="relative flex w-full h-screen overflow-hidden antialiased bg-gray-200">
+    <div id="root" className="relative flex w-full h-screen overflow-hidden antialiased bg-gray-200">
       <div className="relative flex flex-col hidden h-full bg-white border-r border-gray-300 shadow-xl md:block transform transition-all duration-500 ease-in-out"
         style={{ width: "24rem" }}>
         <div className="flex justify-between px-3 pt-1 text-white">
@@ -26,7 +26,7 @@ function Home() {
           </div>
         </div>
         <Channels />
-        <NewChannelForm />
+        <NewChannel />
       </div>
       <div className="relative flex flex-col flex-1">
         <Navbar />

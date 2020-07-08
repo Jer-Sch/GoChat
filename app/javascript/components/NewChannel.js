@@ -1,5 +1,5 @@
-import React from "react";
-import Modal from "react-modal"
+import React, { useState } from "react";
+import Modal from "react-modal";
 
 const customStyles = {
   content: {
@@ -12,14 +12,41 @@ const customStyles = {
   }
 };
 
-function NewChannelForm() {
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-  function openModal() {
+function NewChannel() {
+  const [name, setName] = useState("");
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  Modal.setAppElement(document.getElementById('root'));
+
+  const openModal = () => {
     setIsOpen(true);
   }
 
-  function closeModal() {
+  const closeModal = () => {
     setIsOpen(false);
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const url = "/channels";
+    const body = { name };
+    const token = document.querySelector('meta[name="csrf-token"]').content;
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "X-CSRF-Token": token,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(body)
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Something went wrong with the network response.");
+        }
+      })
+    closeModal();
   }
 
   return (
@@ -37,21 +64,20 @@ function NewChannelForm() {
       </div>
       <Modal
         isOpen={modalIsOpen}
-        onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Add a channel"
       >
-        <form className="w-full max-w-sm">
+        <form className="w-full max-w-sm" onSubmit={handleSubmit}>
           <div className="font-bold text-xl mb-2 text-center">Create a channel</div>
           <div className="flex items-center border-b border-b-2 border-teal-500 py-2">
             <input
               type="text"
-              name="name"
-              id="channelName"
+              value={name}
               placeholder="e.g. Ruby on Rails"
               className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight"
+              onChange={(e) => setName(e.target.value)}
             />
-            <button className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">Submit</button>
+            <button className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" type="submit">Submit</button>
             <button onClick={closeModal} className="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" type="button">
               Cancel
              </button>
@@ -63,4 +89,4 @@ function NewChannelForm() {
 
 }
 
-export default NewChannelForm;
+export default NewChannel;

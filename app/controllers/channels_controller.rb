@@ -5,10 +5,9 @@ class ChannelsController < ApplicationController
     render json: channels
   end
 
-  def new
-  end
-
   def create
+    channel = Channel.create!(channel_params)
+    render json: channel if channel
   end
 
   def edit

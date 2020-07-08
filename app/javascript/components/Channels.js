@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function Channels() {
   const [channels, setChannels] = useState([]);
@@ -21,25 +22,27 @@ function Channels() {
       style={{ paddingTop: "0.65rem", paddingBottom: "0.65rem" }} key={index}>
       <div className="flex justify-between w-full focus:outline-none">
         <div className="flex justify-between w-full">
-          <div className="items-center flex-1 min-w-0">
-            <div className="flex justify-center mb-1">
-              <h2 className="text-md font-semibold text-black">{"# " + channel.name}</h2>
-            </div>
-          </div>
+          <ul className="items-center flex-1 min-w-0">
+            <li className="flex justify-center mb-1">
+              <h2 className="text-md font-semibold text-black">
+                <Link to={"/channels/" + channel.id}>{"# " + channel.name}</Link>
+              </h2>
+            </li>
+          </ul>
         </div>
       </div>
     </li>
   ));
 
   return (
-    <div
-      className="relative mt-2 mb-4 overflow-x-hidden overflow-y-auto scrolling-touch lg:max-h-sm scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray">
-      <ul className="flex flex-col inline-block w-full h-screen px-2 select-none">
-        {allChannels}
-      </ul>
-    </div>
-
-  );
+      <div
+        className="relative mt-2 mb-4 overflow-x-hidden overflow-y-auto scrolling-touch lg:max-h-sm scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray">
+        <ul className="flex flex-col inline-block w-full h-screen px-2 select-none">
+          {allChannels}
+        </ul>
+      </div>
+    );
 }
+
 
 export default Channels

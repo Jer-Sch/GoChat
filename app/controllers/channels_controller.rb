@@ -10,6 +10,11 @@ class ChannelsController < ApplicationController
     render json: channel if channel
   end
 
+  def show
+    # channel = Channel.find_by(id: params[:id])
+    # render json: channel
+  end
+
   def edit
   end
 

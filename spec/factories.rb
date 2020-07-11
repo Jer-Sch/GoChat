@@ -1,4 +1,10 @@
 FactoryBot.define do
+  factory :message do
+    channel { nil }
+    user { nil }
+    message { "MyText" }
+  end
+
 
   factory :channel do
     name { "ruby" }

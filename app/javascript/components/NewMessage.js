@@ -1,9 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 
-function MessageForm() {
+function NewMessage(props) {
+  const [content, setContent] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const url = "/messages";
+    const channelID = props.channelID
+    const body = { content, channel_id: channelID };
+    const token = document.querySelector('meta[name="csrf-token"]').content;
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "X-CSRF-Token": token,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(body)
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error(response.status);
+        }
+      })
+  }
+
   return (
-    <div
-      className="relative flex items-center self-center w-full max-w-xl p-4 overflow-hidden text-gray-600 focus-within:text-gray-400">
+    <form
+      className="relative flex items-center self-center w-full max-w-xl p-4 overflow-hidden text-gray-600 focus-within:text-gray-400"
+      onSubmit={handleSubmit}>
       <div className="w-full">
         <span className="absolute inset-y-0 right-0 flex items-center pr-6">
           <button type="submit" className="p-1 focus:outline-none focus:shadow-none hover:text-blue-500">
@@ -14,12 +40,18 @@ function MessageForm() {
             </svg>
           </button>
         </span>
-        <input type="search"
+        <input 
+          type="text"
+          value={content}
           className="w-full py-2 pl-10 text-sm bg-white border border-transparent appearance-none rounded-tg placeholder-gray-800 focus:bg-white focus:outline-none focus:border-blue-500 focus:text-gray-900 focus:shadow-outline-blue"
-          style={{ borderRadius: '25px' }} placeholder="Message..." autoComplete="off" />
-      </div>
-    </div>
+          style={{ borderRadius: '25px' }} 
+          placeholder="Message..." 
+          autoComplete="off"
+          onChange={(e) => setContent(e.target.value)} 
+          />
+        </div>
+      </form>
   );
 }
 
-export default MessageForm;
+export default NewMessage;

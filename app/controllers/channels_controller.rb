@@ -10,6 +10,13 @@ class ChannelsController < ApplicationController
     render json: channel if channel
   end
 
+  def show
+    channel = Channel.find_by(id: params[:id])
+    message = Message.new(channel: channel)
+    messages = channel.messages
+    render json: messages
+  end
+
   def edit
   end
 

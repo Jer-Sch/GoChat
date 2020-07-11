@@ -15,7 +15,7 @@ function Channels() {
         }
       })
       .then(response => setChannels(response))
-  }, [channels])
+  }, [])
 
   const allChannels = channels.map((channel, index) => (
     <li className="flex flex-no-wrap items-center pr-3 text-black rounded-lg cursor-pointer mt-200 py-65 hover:bg-gray-200"

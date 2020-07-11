@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   resources :channels
+  resources :messages
 
 end

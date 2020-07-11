@@ -1,6 +1,6 @@
 import React from "react";
 
-function ChatBubbles() {
+function Messages() {
   return (
     <>
       <div className="self-start w-3/4 my-2">
@@ -17,4 +17,4 @@ function ChatBubbles() {
   );
 }
 
-export default ChatBubbles;
+export default Messages;

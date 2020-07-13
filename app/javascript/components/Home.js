@@ -1,7 +1,6 @@
 import React from "react";
 import Channels from "./Channels";
 import Navbar from "./Navbar";
-import NewChannel from "./NewChannel";
 import Channel from "./Channel";
 
 
@@ -20,12 +19,11 @@ function Home() {
               <div
                 className="flex items-center justify-center block py-5 text-xl font-semibold leading-normal tracking-wide border-b-2 border-transparent">
                 Channels
-                    </div>
+              </div>
             </div>
           </div>
         </div>
         <Channels />
-        <NewChannel />
       </div>
       <div className="relative flex flex-col flex-1">
         <Navbar />

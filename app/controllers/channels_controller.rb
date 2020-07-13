@@ -6,8 +6,13 @@ class ChannelsController < ApplicationController
   end
 
   def create
-    channel = Channel.create!(channel_params)
-    render json: channel if channel
+    channel = Channel.new(channel_params)
+    if channel.save
+      serialized_data = ActiveModelSerializers::Adapter::Json.new(
+        ChannelSerializer.new(channel)
+      ).serializeable_hash
+      ActionCable.server.broadcast 'channels_channel', serialized_data
+      head :ok
   end
 
   def show

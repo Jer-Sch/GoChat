@@ -1,11 +1,15 @@
 class MessagesController < ApplicationController
   def create
     user = current_user
-    channel = params[:channel_id]
+    channel = Channel.find(message_params[:channel_id])
     message = user.messages.new(message_params)
-    message.channel_id = channel
-    message.save
-    render json: message
+    # message.channel_id = channel?
+    if message.save
+      serialized_data = ActiveModelSerializers::Adapter::Json.new(
+        MessageSerializer.new(message)
+      ).serializeable_hash
+      MessageChannel.broadcast_to channel, serialized_data
+      head :ok
   end
 
   private

@@ -10,6 +10,7 @@ class MessagesController < ApplicationController
       ).serializeable_hash
       MessageChannel.broadcast_to channel, serialized_data
       head :ok
+    end
   end
 
   private

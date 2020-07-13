@@ -13,14 +13,15 @@ class ChannelsController < ApplicationController
       ).serializeable_hash
       ActionCable.server.broadcast 'channels_channel', serialized_data
       head :ok
+    end
   end
 
-  def show
-    channel = Channel.find_by(id: params[:id])
-    message = Message.new(channel: channel)
-    messages = channel.messages
-    render json: messages
-  end
+  # def show
+  #   channel = Channel.find_by(id: params[:id])
+  #   message = Message.new(channel: channel)
+  #   messages = channel.messages
+  #   render json: messages
+  # end
 
   def edit
   end

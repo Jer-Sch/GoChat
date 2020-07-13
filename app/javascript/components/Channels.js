@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
+import { ActionCableConsumer } from "react-actioncable-provider";
+import Cable from "./Cable";
 
 const customStyles = {
   content: {
@@ -83,6 +85,8 @@ function Channels() {
     <>
       <div
         className="relative mt-2 mb-4 overflow-x-hidden overflow-y-auto scrolling-touch lg:max-h-sm scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray">
+          <ActionCableConsumer channel={{ channel: "ChannelsChannel" }} />
+          <Cable channels={channels} />
         <ul className="flex flex-col inline-block w-full h-screen px-2 select-none">
           {allChannels}
         </ul>
